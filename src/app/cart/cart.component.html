@@ -1,0 +1,33 @@
+<div class="side-cart" [ngClass]="{ 'active': isVisible }">
+
+  <button class="close-btn" (click)="toggleCart()">✖</button>
+
+  <h3>Carrito de Compras</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Hamburguesa</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let burger of cartList$ | async">
+        <td>{{ burger.name }}</td>
+        <td>{{ burger.quantity }}</td>
+        <td>{{ burger.price * burger.quantity | currency:'ARS' }}</td>
+        <td>
+          <button (click)="removeItem(burger)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="cartList$ | async as cartList">
+    Total: {{ getTotal(cartList) | currency:'ARS' }}
+  </p>
+
+  <button (click)="confirmPurchase()">Confirmar pedido</button>
+</div>

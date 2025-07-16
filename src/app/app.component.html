@@ -1,98 +1,22 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NT Burgers</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
-
-    /* Reset universal */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* Cuerpo general */
-    body {
-      font-family: 'Fredoka One', cursive;
-      background-color: #f2e1b3;
-    }
-
-    /* Encabezado (header) */
-    header {
-      background-color: #1f3c33;
-      padding: 20px 40px;
-      /* padding lateral para que no toque los bordes */
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #f2e1b3;
-      width: 100%;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #f7931e;
-    }
-
-    nav a {
-      color: #f2e1b3;
-      text-decoration: none;
-      margin: 0 15px;
-      font-size: 18px;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #f7931e;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-    }
-
-    footer {
-      background-color: #1f3c33;
-      color: #f2e1b3;
-      text-align: center;
-      padding: 20px 0;
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.2rem;
-      margin-top: 40px;
-      width: 100%;
-    }
-  </style>
-</head>
-
-<body>
-
-  <header>
-    <div class="logo">NT BURGERS</div>
-    <nav class="nav-links">
-      <a href="#inicio">Inicio</a>
-      <a href="#hamburguesas">Hamburguesas</a>
-      <a href="#pedidos">Pedidos</a>
-    </nav>
-  </header>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-8">
-        <app-burgers-list></app-burgers-list>
-      </div>
-      <div class="col-4">Carrito</div>
-    </div>
+<header id="inicio">
+  <img id="logo-header" src="assets/img/logo.jpeg" alt="logo nt burgers">
+  <div id="btn-menu">
+    <img src="assets/img/icono-menu.jpg" alt="">
   </div>
+</header>
 
-  <footer>
-    © NT Burgers 2025
-  </footer>
-
-</body>
-
-</html>
+<nav>
+  <ul>
+    <li><a [routerLink]="['/']">Inicio</a></li>
+    <li><a [routerLink]="['/burgers']">Hamburguesas</a></li>
+    <li><a [routerLink]="['/about']">Contacto</a></li>
+    <li>
+      <a (click)="cart.toggleCart()">Carrito</a>
+    </li>
+  </ul>
+</nav>
+<app-cart #cart></app-cart>
+<router-outlet></router-outlet>
+<footer>
+  © NT Burgers 2025
+</footer>

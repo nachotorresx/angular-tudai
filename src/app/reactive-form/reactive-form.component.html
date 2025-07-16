@@ -1,0 +1,46 @@
+<!-- Contenedor principal del formulario -->
+<div class="contact-container">
+  <h2 class="text-center">Contacto</h2>
+  <form [formGroup]="formularioContacto" (submit)="onSubmit()">
+    <div class="contact-item">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" formControlName="nombre" placeholder="Tu nombre completo" />
+    </div>
+
+    <div class="contact-item">
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" formControlName="email" placeholder="nombre@ejemplo.com" />
+      <div class="error" *ngIf="formularioContacto.get('email')?.touched">
+        <p *ngIf="formularioContacto.get('email')?.hasError('required')" class="text-danger">El email es requerido</p>
+        <p *ngIf="formularioContacto.get('email')?.hasError('email')" class="text-danger">El formato no es válido</p>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <label for="telefono">Teléfono</label>
+      <input type="number" id="telefono" formControlName="telefono" placeholder="(011) 1234-5678" />
+    </div>
+
+    <div class="contact-item">
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" formControlName="mensaje" rows="4" placeholder="Escribí tu consulta aquí..."
+        required></textarea>
+    </div>
+
+    <button type="submit" [disabled]="formularioContacto.invalid" class="submit-button">Enviar mensaje</button>
+  </form>
+</div>
+
+<h2 class="text-center">Mensajes recibidos:</h2>
+
+<div class="contact-info">
+  <div class="contact-item" *ngFor="let mensaje of mensajes.slice().reverse(); let i = index">
+    <div class="mensaje-header">
+      <button class="delete-button" (click)="deleteMensaje(mensaje.id)">Eliminar</button>
+    </div>
+    <h3>{{ mensaje.nombre }}</h3>
+    <p><strong>Email:</strong> {{ mensaje.email }}</p>
+    <p *ngIf="mensaje.telefono"><strong>Teléfono:</strong> {{ mensaje.telefono }}</p>
+    <p><strong>Mensaje:</strong> {{ mensaje.mensaje }}</p>
+  </div>
+</div>

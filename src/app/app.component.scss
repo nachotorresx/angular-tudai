@@ -1,0 +1,158 @@
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f3c33;
+}
+
+header #btn-menu {
+  margin-right: 5px;
+  border-radius: 3px;
+  color: #1a4d35;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+header img {
+  width: 100px;
+  height: 100px;
+}
+
+header #btn-menu img {
+  margin-top: 5px;
+  width: 80px;
+  height: 80px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: #1f3c33;
+  display: none;
+}
+
+.open {
+  display: block;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0;
+  width: 100%;
+}
+
+nav ul li {
+  list-style: none;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  color: #fff5e6;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+  margin-left: 10px;
+}
+
+nav ul li:hover {
+  color: #d1b89e;
+  transform: scale(1.1);
+}
+
+nav ul li::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 3px;
+  height: 0;
+  background-color: #d1b89e;
+  transition: height 0.3s ease;
+  transform: translateY(-50%);
+}
+
+nav ul li:hover::before {
+  height: 50%;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #f2e1b3;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #d1b89e;
+  transform: scale(1.1);
+}
+
+.hero {
+  background-size: cover;
+  background-position: center;
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--color-text-light);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  transition: font-size 0.5s ease;
+}
+
+.hero h1:hover {
+  font-size: 3.5rem;
+  cursor: pointer;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  transition: font-size 0.5s ease;
+}
+
+.hero p:hover {
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+footer {
+  background-color: #1f3c33;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+
+@media (width >=768px) {
+
+  header {
+    justify-content: center;
+  }
+
+  nav {
+    display: flex;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  #btn-menu {
+    display: none;
+  }
+
+}

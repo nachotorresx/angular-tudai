@@ -1,32 +1,34 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th>Imagen</th>
-            <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Precio</th>
-            <th>Stock</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><img src="{{burger.image}}" alt="{{burger.name}}"/></td>
-            <td>{{burger.name}}</td>
-            <td>{{burger.description}}</td>
-            <td>{{burger.price}}</td>
-            <td>{{burger.stock}}</td>
-        </tr>
-        <tr>
-            <td>Cheese</td>
-            <td>Hamburguesa con cheddar</td>
-            <td>7500</td>
-            <td>4</td>
-        </tr>
-        <tr>
-            <td>Hatton</td>
-            <td>Hamburguesa con cheddar</td>
-            <td>8500</td>
-            <td>5</td>
-        </tr>
-    </tbody>
-</table>
+<app-cart #cart></app-cart>
+
+<div class="items-section">
+  <div class="items-container">
+    <div
+      class="item-card"
+      *ngFor="let burger of burgers$ | async"
+      [ngClass]="{'clearance': burger.clearance}"
+    >
+      <img [src]="burger.image" [alt]="burger.name" />
+
+      <div class="item-card-content">
+        <h3>{{ burger.name }}</h3>
+        <p class="price">Precio: {{ burger.price | currency }}</p>
+        <p class="description">{{ burger.description }}</p>
+
+        <p class="category">
+          Stock: 
+          <span *ngIf="burger.stock === 0">Sin Stock</span>
+          <span *ngIf="burger.stock > 0">{{ burger.stock }}</span>
+        </p>
+
+        <div class="burger-actions" *ngIf="burger.stock > 0">
+          <app-input-number
+            [(quantity)]="burger.quantity"
+            [max]="burger.stock"
+            (maxReached)="maxReached($event)"
+          ></app-input-number>
+          <button (click)="addToCart(burger)">Agregar al carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

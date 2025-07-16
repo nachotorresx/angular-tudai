@@ -1,0 +1,7 @@
+<div class="card-actions">
+        <div class="quantity-control">
+                <button (click)="downQuantity()" class="qty-button">-</button>
+                <input type="number" [(ngModel)]="quantity" (focusout)="verifyProductoQuantity()" class="qty-input" />
+                <button (click)="upQuantity()" class="qty-button">+</button>
+        </div>
+</div>
