@@ -16,6 +16,8 @@ Cuando se confima el pedido se descuenta dicha cantidad del stock disponible.
 Tambien hay una seccion de contacto donde se requieren datos para poder dejar un mensaje, el cual tambien
 se puede eliminar
 
+De momento el proyecto solo esta diseñado para desktop
+
 Todo esto consumiendo la api rest de mockApi.
 
 https://68756ede814c0dfa65388b2d.mockapi.io/burgers/Burgers
